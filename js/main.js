@@ -11,6 +11,8 @@ const getRandomArbitrary = function(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+alert('getRandomArbitrary' + getRandomArbitrary(1, 150));
+
 
 // Получение случайного числа с плавающей точкой из диапазона с указанным количеством знаков после запятой
 
@@ -21,19 +23,9 @@ const getRandomArbitraryFloat = function(min, max, n) {
   return +((Math.random() * (max - min) + min).toFixed(n));
 }
 
+alert('getRandomArbitraryFloat' + getRandomArbitraryFloat(1, 150, 2));
 
 // Проверка нажатой клавиши
-
-const isEscKeycode = function(evt) {
-  const ESK_KEYCODE = 27;
-  return evt.keyCode === ESK_KEYCODE;
-}
-
-const isEnterKeycode = function(evt) {
-  const ENTER_KEYCODE = 13;
-  return evt.keyCode === ENTER_KEYCODE;
-}
-
 
 
 //Кекстаграм
@@ -50,6 +42,7 @@ const getRandomIntInclusive = function(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+alert('getRandomIntInclusive' + getRandomIntInclusive(1, 150));
 
 //Проверка максимальной длины строки
 
@@ -59,3 +52,5 @@ const checkTextLength = function(text, max) {
   }
   return false;
 }
+
+alert('checkTextLength' + checkTextLength('Тра-та-та', 140));
