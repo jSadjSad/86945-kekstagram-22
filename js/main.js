@@ -11,7 +11,7 @@ const getRandomArbitrary = function(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-alert('getRandomArbitrary' + getRandomArbitrary(1, 150));
+alert('getRandomArbitrary (1, 150) - ' + getRandomArbitrary(1, 150));
 
 
 // Получение случайного числа с плавающей точкой из диапазона с указанным количеством знаков после запятой
@@ -23,7 +23,7 @@ const getRandomArbitraryFloat = function(min, max, n) {
   return +((Math.random() * (max - min) + min).toFixed(n));
 }
 
-alert('getRandomArbitraryFloat' + getRandomArbitraryFloat(1, 150, 2));
+alert('getRandomArbitraryFloat (1, 150, 2) - ' + getRandomArbitraryFloat(1, 150, 2));
 
 // Проверка нажатой клавиши
 
@@ -42,7 +42,7 @@ const getRandomIntInclusive = function(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-alert('getRandomIntInclusive' + getRandomIntInclusive(1, 150));
+alert('getRandomIntInclusive (1, 150) - ' + getRandomIntInclusive(1, 150));
 
 //Проверка максимальной длины строки
 
@@ -53,4 +53,4 @@ const checkTextLength = function(text, max) {
   return false;
 }
 
-alert('checkTextLength' + checkTextLength('Тра-та-та', 140));
+alert('checkTextLength ("Тра-та-та", 140) - ' + checkTextLength('Тра-та-та', 140));
