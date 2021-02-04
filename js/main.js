@@ -20,7 +20,7 @@ const getRandomArbitraryFloat = function(min, max, n) {
   if (min > max) {
     return 'Правильно введите границы диапазона';
   }
-  return +((Math.random() * (max - min) + min).toFixed(n));
+  return +(getRandomArbitrary(min, max).toFixed(n));
 }
 
 alert('getRandomArbitraryFloat (1, 150, 2) - ' + getRandomArbitraryFloat(1, 150, 2));
@@ -47,10 +47,7 @@ alert('getRandomIntInclusive (1, 150) - ' + getRandomIntInclusive(1, 150));
 //Проверка максимальной длины строки
 
 const checkTextLength = function(text, max) {
-  if (text.length <= max) {
-    return true;
-  }
-  return false;
+  return text.length <= max;
 }
 
 alert('checkTextLength ("Тра-та-та", 140) - ' + checkTextLength('Тра-та-та', 140));
