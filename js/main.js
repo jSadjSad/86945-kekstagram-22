@@ -56,6 +56,7 @@
 const PHOTOS_AMOUNT = 25;
 const COMMENTATORS_AMOUNT = 6;
 const COMMENTS_MAX_AMOUNT = 2;
+const MAX_COMMENTATOR_ID = 300;
 
 const PHOTO_DESCRIPTIONS = ['Пляж рядом с отелем', 'Go to the beach', 'Пляж с белым песочком', 'Девушка в бикини с фотоаппаратом', 'Прикольные рисовые человечки', 'Бэтмобиль',  'Клубника', 'Морс и ягодки',  'Самолет над пляжем', 'Галошница на колесиках', 'Дорога к морю', 'Белая AUDI посреди деревни', 'Странное блюдо из непонятно чего с офощами', 'Суши-кот', 'На диване в сапогах', 'Над облаками', 'Симфонический оркестр', 'Раритет', 'Тапки с подсветкой', 'Отель и пальмы', 'Вкусно и полезно', 'Закат над морем', 'Милашка-крабик', 'We will rock you', 'Дефендер и бегемоты'];
 
@@ -89,7 +90,7 @@ const createRandomArrayFromArray = function(sourceArray, minAmount, maxAmount) {
   let elements = [];
   while (elementsAmount > 0) {
     let element = sourceArray[getRandomIntInclusive(0, sourceArray.length - 1)];
-    if (elements !== element) {
+    if (!elements.includes(element)) {
       elements.push(element);
       elementsAmount--;
     }
@@ -97,19 +98,18 @@ const createRandomArrayFromArray = function(sourceArray, minAmount, maxAmount) {
   return elements;
 }
 
-// Получаем случайное количество комментариев
-let RandomNumbers = createRandomNumbersArray(COMMMENTATORS_NAMES.length, 1, 500);
+// Получаем случайное значение id
+let RandomNumbers = createRandomNumbersArray(COMMMENTATORS_NAMES.length, 1, MAX_COMMENTATOR_ID);
 
 
 // Генерируем комментарий
 const createComment = function(count) {
-  let comment = {
+  return {
     id: RandomNumbers[count],
     avatar: 'img/avatar-' + count + '.svg',
     message: (createRandomArrayFromArray(COMMMENTATORS_MESSAGES, 1, COMMENTS_MAX_AMOUNT)).join(' '),
     name: COMMMENTATORS_NAMES[getRandomIntInclusive(0, COMMMENTATORS_NAMES.length - 1)],
   }
-  return comment;
 }
 
 // Генерируем массив комментариев
@@ -124,23 +124,28 @@ const createCommentsList = function(num) {
 
 // Генерируем профиль фотографии
 const createPhotoProfile = function(number) {
-  let photoProfile = {
-    id: number,
-    url: 'photos/' + number + '.jpg',
+  return {
+    id: (number + 1),
+    url: 'photos/' + (number + 1) + '.jpg',
     description: PHOTO_DESCRIPTIONS[number],
     likes: getRandomIntInclusive (15, 200),
     comments: createCommentsList(COMMENTATORS_AMOUNT),
   }
-  return photoProfile;
 }
 
 // Генерируем массив профилей
-const createPhotoProfileList = function(photosAmount) {
-  let photoProfileList = [];
-  for (let i = 1; i <= photosAmount; i++) {
-    photoProfileList.push(createPhotoProfile(i));
-  }
-  return photoProfileList;
+// const createPhotoProfileList = function(photosAmount) {
+//   let photoProfileList = [];
+//   for (let i = 1; i <= photosAmount; i++) {
+//     photoProfileList.push(createPhotoProfile(i));
+//   }
+//   return photoProfileList;
+// }
+
+
+const createPhotoProfileList = function() {
+  let photoProfileList = new Array(PHOTOS_AMOUNT).fill(null).map((photoProfileList, index) => createPhotoProfile(index));
+  return photoProfileList
 }
 
-createPhotoProfileList(PHOTOS_AMOUNT);
+console.log(createPhotoProfileList());
