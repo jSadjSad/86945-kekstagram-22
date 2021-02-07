@@ -148,4 +148,4 @@ const createPhotoProfileList = function() {
   return photoProfileList
 }
 
-console.log(createPhotoProfileList());
+createPhotoProfileList();
