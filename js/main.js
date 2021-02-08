@@ -21,9 +21,9 @@ const getRandomIntInclusive = (min, max) => {
 // Получаем массив случайных элементов из другого массива
 const createRandomArrayFromArray = (sourceArray, minAmount, maxAmount) => {
   let elementsAmount = getRandomIntInclusive(minAmount, maxAmount);
-  let elements = [];
+  const elements = [];
   while (elementsAmount > 0) {
-    let element = sourceArray[getRandomIntInclusive(0, sourceArray.length - 1)];
+    const element = sourceArray[getRandomIntInclusive(0, sourceArray.length - 1)];
     if (!elements.includes(element)) {
       elements.push(element);
       elementsAmount--;
@@ -51,8 +51,8 @@ const createComment = (photoID, commentNumber) => {
 
 // Генерируем массив комментариев
 const createCommentsList = (commentsMaxNumber, photoID) => {
-  let randomNumber = getRandomIntInclusive (1, commentsMaxNumber);
-  let commentsList = [];
+  const randomNumber = getRandomIntInclusive (1, commentsMaxNumber);
+  const commentsList = [];
   for (let i = 1; i <= randomNumber; i++) {
     commentsList.push(createComment(photoID, i));
   }
