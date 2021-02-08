@@ -18,19 +18,6 @@ const getRandomIntInclusive = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Получаем массив случайных чисел
-const createRandomNumbersArray = (n, min, max) => {
-  let array = [];
-  while (n > 0) {
-    let randomNumber = getRandomIntInclusive(min, max);
-    if (!array.includes(randomNumber)) {
-      array.push(randomNumber);
-      n--;
-    }
-  }
-  return array;
-}
-
 // Получаем массив случайных элементов из другого массива
 const createRandomArrayFromArray = (sourceArray, minAmount, maxAmount) => {
   let elementsAmount = getRandomIntInclusive(minAmount, maxAmount);
