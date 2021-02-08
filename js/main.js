@@ -1,10 +1,9 @@
 'use strict';
 
 const PHOTOS_AMOUNT = 25;
-const COMMENTATORS_AMOUNT = 10;
+const COMMENTS_AMOUNT = 10;
 const AVATARS_AMOUNT = 6;
 const MESSAGES_MAX_AMOUNT = 2;
-const MAX_COMMENTATOR_ID = 100;
 
 const PHOTO_DESCRIPTIONS = ['Пляж рядом с отелем', 'Go to the beach', 'Пляж с белым песочком', 'Девушка в бикини с фотоаппаратом', 'Прикольные рисовые человечки', 'Бэтмобиль',  'Клубника', 'Морс и ягодки',  'Самолет над пляжем', 'Галошница на колесиках', 'Дорога к морю', 'Белая AUDI посреди деревни', 'Странное блюдо из непонятно чего с офощами', 'Суши-кот', 'На диване в сапогах', 'Над облаками', 'Симфонический оркестр', 'Раритет', 'Тапки с подсветкой', 'Отель и пальмы', 'Вкусно и полезно', 'Закат над морем', 'Милашка-крабик', 'We will rock you', 'Дефендер и бегемоты'];
 
@@ -46,21 +45,17 @@ const createRandomArrayFromArray = (sourceArray, minAmount, maxAmount) => {
   return elements;
 }
 
-// Генерируем массив ID комментаторов
-const COMMMENTATORS_IDS = createRandomNumbersArray(COMMMENTATORS_NAMES.length, 1, MAX_COMMENTATOR_ID);
-
 // Генерируем комментарий
-const createComment = () => {
+const createComment = (photoID, commentNumber) => {
   const randomNumber = getRandomIntInclusive(0, COMMMENTATORS_NAMES.length - 1);
   const getAvatarNumber = (randomNumber) => {
     if ((randomNumber + 1) <= (AVATARS_AMOUNT)) {
       return randomNumber + 1;
     }
     return getAvatarNumber(randomNumber - AVATARS_AMOUNT);
-
   }
   return {
-    id: COMMMENTATORS_IDS[randomNumber],
+    id: photoID * 10 + commentNumber,
     avatar: 'img/avatar-' + (getAvatarNumber(randomNumber)) + '.svg',
     message: (createRandomArrayFromArray(COMMMENTATORS_MESSAGES, 1, MESSAGES_MAX_AMOUNT)).join(' '),
     name: COMMMENTATORS_NAMES[randomNumber],
@@ -68,23 +63,23 @@ const createComment = () => {
 }
 
 // Генерируем массив комментариев
-const createCommentsList = (num) => {
-  let randomNumber = getRandomIntInclusive (1, num);
+const createCommentsList = (commentsMaxNumber, photoID) => {
+  let randomNumber = getRandomIntInclusive (1, commentsMaxNumber);
   let commentsList = [];
   for (let i = 1; i <= randomNumber; i++) {
-    commentsList.push(createComment(i));
+    commentsList.push(createComment(photoID, i));
   }
   return commentsList;
 }
 
 // Генерируем профиль фотографии
-const createPhotoProfile = (number) => {
+const createPhotoProfile = (photoProfileNumber) => {
   return {
-    id: (number + 1),
-    url: 'photos/' + (number + 1) + '.jpg',
-    description: PHOTO_DESCRIPTIONS[number],
+    id: (photoProfileNumber + 1),
+    url: 'photos/' + (photoProfileNumber + 1) + '.jpg',
+    description: PHOTO_DESCRIPTIONS[photoProfileNumber],
     likes: getRandomIntInclusive (15, 200),
-    comments: createCommentsList(COMMENTATORS_AMOUNT),
+    comments: createCommentsList(COMMENTS_AMOUNT, (photoProfileNumber + 1)),
   }
 }
 
