@@ -1,4 +1,3 @@
 import './data.js';
-import './image-scale.js';
-import './image-effect.js';
-import './form-validation.js';
+import './upload-overlay-open-close.js';
+import './render-photos.js';

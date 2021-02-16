@@ -1,3 +1,4 @@
+// Получаем случайное целое число
 const getRandomIntInclusive = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -18,4 +19,14 @@ const createRandomArrayFromArray = (sourceArray, minAmount, maxAmount) => {
   return elements;
 }
 
-export { getRandomIntInclusive, createRandomArrayFromArray };
+
+// Проверка нажатой клавиши
+const isEscKey = (evt) => {
+  return (evt.key === ('Escape' || 'Esc'))
+}
+
+const isEnterKey = (evt) => {
+  return (evt.key === 'Enter')
+}
+
+export {getRandomIntInclusive, createRandomArrayFromArray, isEscKey, isEnterKey};

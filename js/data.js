@@ -72,8 +72,8 @@ const createPhotoProfile = (photoProfileNumber) => {
 }
 
 // Генерируем массив профилей
-const createPhotoProfileList = () => {
-  return new Array(photosAmount).fill(null).map((createPhotoProfileList, index) => createPhotoProfile(index));
+const createPhotoProfiles = () => {
+  return new Array(photosAmount).fill(null).map((createPhotoProfiles, index) => createPhotoProfile(index));
 }
 
-createPhotoProfileList();
+export {createPhotoProfiles};
