@@ -8,17 +8,13 @@ const photoItemTemplate = document.querySelector('#picture').content.querySelect
 const renderPhotoItem = (photoProfile) => {
   const photoItem = photoItemTemplate.cloneNode(true);
   photoItem.querySelector('.picture__img').src = photoProfile.url;
+  photoItem.querySelector('.picture__img').alt = photoProfile.description;
   photoItem.querySelector('.picture__comments').textContent = photoProfile.comments.length;
   photoItem.querySelector('.picture__likes').textContent = photoProfile.likes;
   return photoItem;
 }
 
 const photosCollectionFragment = document.createDocumentFragment();
-
-// for (let i = 0; i < photoProfiles.length; i++) {
-//   let photoItem = renderPhotoItem(photoProfiles[i]);
-//   photosCollectionFragment.appendChild(photoItem);
-// }
 
 photoProfiles.forEach((item) => {
   photosCollectionFragment.appendChild(renderPhotoItem(item));

@@ -1,5 +1,5 @@
-import { getRandomIntInclusive } from './util.js';
-import { createRandomArrayFromArray } from './util.js';
+import {getRandomIntInclusive} from './util.js';
+import {createRandomArrayFromArray} from './util.js';
 
 const photosAmount = 25;
 const commentsAmount = 20;
