@@ -14,10 +14,12 @@ const renderPhotoItem = (photoProfile) => {
   return photoItem;
 }
 
-const photosCollectionFragment = document.createDocumentFragment();
+const renderPhotos = () => {
+  const photosCollectionFragment = document.createDocumentFragment();
+  photoProfiles.forEach((item) => {
+    photosCollectionFragment.appendChild(renderPhotoItem(item));
+  });
+  photoContainerNode.appendChild(photosCollectionFragment);
+}
 
-photoProfiles.forEach((item) => {
-  photosCollectionFragment.appendChild(renderPhotoItem(item));
-});
-
-photoContainerNode.appendChild(photosCollectionFragment);
+export {renderPhotos};
