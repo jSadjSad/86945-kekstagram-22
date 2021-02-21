@@ -1,11 +1,5 @@
-import {createPhotoProfiles} from './data.js';
-
-const photoContainerNode = document.querySelector('.pictures');
-const photoProfiles = createPhotoProfiles();
-
-const photoItemTemplate = document.querySelector('#picture').content.querySelector('.picture');
-
 const renderPhotoItem = (photoProfile) => {
+  const photoItemTemplate = document.querySelector('#picture').content.querySelector('.picture');
   const photoItem = photoItemTemplate.cloneNode(true);
   photoItem.querySelector('.picture__img').src = photoProfile.url;
   photoItem.querySelector('.picture__img').alt = photoProfile.description;
@@ -14,7 +8,8 @@ const renderPhotoItem = (photoProfile) => {
   return photoItem;
 }
 
-const renderPhotos = () => {
+const renderPhotos = (photoProfiles) => {
+  const photoContainerNode = document.querySelector('.pictures');
   const photosCollectionFragment = document.createDocumentFragment();
   photoProfiles.forEach((item) => {
     photosCollectionFragment.appendChild(renderPhotoItem(item));

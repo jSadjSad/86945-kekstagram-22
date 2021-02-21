@@ -1,3 +1,5 @@
-import './data.js';
+import {createPhotoProfiles} from './data.js';
 import {renderPhotos} from './render-photos.js';
-renderPhotos();
+
+const photoProfiles = createPhotoProfiles();
+renderPhotos(photoProfiles);
